@@ -3,7 +3,8 @@ from relationship_app.models import Book
 # Query All Books by a Specific Author
 
 def all_books_by_author(author_name):
-    return Book.objects.filter(author_name=author_name)
+    Author.objects.get(name=author_name)"
+    return Book.objects.filter(author=author)
 
 # List All Books in a Library
 
