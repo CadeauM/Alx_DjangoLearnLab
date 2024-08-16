@@ -7,8 +7,9 @@ def all_books_by_author(author_name):
 
 # List All Books in a Library
 
-def all_books_in_library():
-    return Book.objects.all()
+def all_books_in_library(library_name):
+    Library.objects.get(name=library_name)
+    return books.all()
 
 # Retrieve the Librarian for a Library
 
