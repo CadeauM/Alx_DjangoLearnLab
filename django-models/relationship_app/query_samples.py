@@ -15,4 +15,4 @@ def all_books_in_library(library_name):
 # Retrieve the Librarian for a Library
 
 def librarian_to_library(library_id):
-    return Librarian.objects.filter(library_id=library_id).first()
+    return Librarian.objects.get(library=library_id).first()
