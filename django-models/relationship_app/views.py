@@ -2,6 +2,7 @@ from .models import Library
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Book
+
 from django.views.generic import DetailView   # DetailView is django built in view that displays details about a single object here which is Library 
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.forms import UserCreationForm
@@ -9,6 +10,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test
 from django.http import HttpResponse
+
+from .models import Library
+from django.views.generic.detail import DetailView # DetailView is django built in view that displays details about a single object here which is Library 
 # Create your views here.
 
 
