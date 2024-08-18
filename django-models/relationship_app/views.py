@@ -13,6 +13,7 @@ from django.http import HttpResponse
 
 from .models import Library
 from django.views.generic.detail import DetailView # DetailView is django built in view that displays details about a single object here which is Library 
+from django.contrib.auth import login
 # Create your views here.
 
 
