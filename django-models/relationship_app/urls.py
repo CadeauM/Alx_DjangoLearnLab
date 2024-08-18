@@ -6,7 +6,6 @@ from .views import LoginView, LogoutView, register
 from .views import admin_view, librarian_view, member_view
 
 from .views import list_books
-views.register", "LogoutView.as_view(template_name=", "LoginView.as_view(template_name=
 urlpatterns = [
     path('', views.index, name='index'),  # Index page of the relationship_app
     path('books/', views.list_books, name='list_books'),
