@@ -4,6 +4,9 @@ from .models import Library
 from django.shortcuts import render, redirect
 from .forms import BookForm
 from .models import Book
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.views import View
 # Create your views here.
 
 def LibraryDetailView(request, pk):
@@ -46,3 +49,34 @@ def delete_book(request, book_id):
 
 def index(request):
     return render(request, 'index.html')
+
+
+
+@login_required
+def index(request):
+    # Your view logic here
+    return render(request, 'index.html')
+
+@permission_required('bookshelf.view_book', raise_exception=True)
+def book_detail(request, book_id):
+    # Your view logic here
+    return render(request, 'book_detail.html')
+
+@method_decorator(login_required, name='dispatch')
+class IndexView(View):
+    def get(self, request):
+        # Your view logic here
+        return render(request, 'index.html')
+
+@method_decorator(permission_required('bookshelf.view_book', raise_exception=True), name='dispatch')
+class BookDetailView(View):
+    def get(self, request, book_id):
+        # Your view logic here
+        return render(request, 'book_detail.html')
+
+from .decorators import custom_permission_required
+
+@custom_permission_required
+def some_view(request):
+    # Your view logic here
+    return render(request, 'some_template.html')
