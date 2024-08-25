@@ -7,6 +7,8 @@ from .models import Book
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views import View
+from .forms import ExampleForm
+
 # Create your views here.
 
 def LibraryDetailView(request, pk):
@@ -80,3 +82,8 @@ from .decorators import custom_permission_required
 def some_view(request):
     # Your view logic here
     return render(request, 'some_template.html')
+
+def search_books(request):
+    query = request.GET.get('q', '')
+    books = Book.objects.filter(title__icontains=query)
+    return render(request, 'bookshelf/book_list.html', {'books': books})

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+</head>
+<body>
+    <h1>Form Example</h1>
+    <form method="post">
+        {% csrf_token %}
+        <!-- Add form fields here -->
+        <label for="example_input">Example Input:</label>
+        <input type="text" id="example_input" name="example_input" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
