@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'relationship_app',
+    'bookshelf',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'advanced_features_and_security_project.urls'
+ROOT_URLCONF = 'LibraryProject.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'advanced_features_and_security_project.wsgi.application'
+WSGI_APPLICATION = 'LibraryProject.wsgi.application'
 
 
 # Database
@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'advanced_features_and_security_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db_advanced_features_and_security.sqlite3',
+        'NAME': BASE_DIR / 'db_LibraryProject.sqlite3',
     }
 }
 
