@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bookshelf',
+    'relationship_app',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'LibraryProject.urls'
+ROOT_URLCONF = 'advanced_features_and_security_project.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'LibraryProject.wsgi.application'
+WSGI_APPLICATION = 'advanced_features_and_security_project.wsgi.application'
 
 
 # Database
@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'LibraryProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db_advanced_features_and_security.sqlite3',
     }
 }
 
@@ -118,6 +118,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Media files
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -126,3 +130,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # redirect constant variables to redirect to the profile page
 LOGIN_REDIRECT_URL = "/accounts/profile"
 LOGOUT_REDIRECT_URL = "/accounts/profile"
+
+AUTHENTICATION_BACKENDS = [
+    'path.to.EmailBackend',  # Your custom backend
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+]
+
+AUTH_USER_MODEL = 'relationship_app.CustomUser'
