@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'relationship_app',
-    'django_model_project',
 ]
 
 MIDDLEWARE = [
@@ -119,6 +118,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Media files
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -132,3 +135,5 @@ AUTHENTICATION_BACKENDS = [
     'path.to.EmailBackend',  # Your custom backend
     'django.contrib.auth.backends.ModelBackend',  # Default backend
 ]
+
+AUTH_USER_MODEL = 'relationship_app.CustomUser'
