@@ -21,6 +21,8 @@ class BookTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Book.objects.count(), 1)
         self.assertEqual(Book.objects.get().title, 'Test Book')
+        self.client.login(username='testuser', password='testpass')
+
 
     def test_get_book_list(self):
         """Test that the list of books can be retrieved"""
