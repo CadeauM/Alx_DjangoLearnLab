@@ -14,6 +14,7 @@ from django.views.generic import DetailView
 from django.views.generic import CreateView
 from django.views.generic import UpdateView
 from django.views.generic import DeleteView
+from django.db.models import Q
 from .models import Post
 from django.urls import reverse_lazy
 
@@ -98,3 +99,15 @@ def add_comment(request, post_id):
         else:
             form = CommentForm()
             return render(request, 'blog/add_comment.html', {'form': form, 'post': post})
+
+def search_posts(request):
+    query = request.GET.get('q')  # Gets the search term from the URL
+    results = [] 
+    
+    if query:  # Searches for posts where the title, content, or tags match the query.
+        results = Post.objects.filter(
+            Q(title__icontains=query) |
+            Q(content__icontains=query) |
+            Q(tags__name__icontains=query)
+        ).distinct()
+    return render(request, 'blog/search_results.html', {'results': results, 'query': query})
