@@ -2,14 +2,18 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib import messages
 from .models import Post
-from .models import Comment
+from .models import Comment, CommentCreateView, CommentUpdateView, CommentDeleteView
 from .forms import CommentForm
 from .forms import UserRegisterForm  # Importing the forms file
 from django.contrib.auth.decorators import login_required  # Ensures only logged-in users can access the profile page
 from django.shortcuts import get_object_or_404 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.views.generic import ListView
+from django.views.generic import DetailView
+from django.views.generic import CreateView
+from django.views.generic import UpdateView
+from django.views.generic import DeleteView
 from .models import Post
 from django.urls import reverse_lazy
 
