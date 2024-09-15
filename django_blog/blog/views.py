@@ -9,11 +9,7 @@ from django.contrib.auth.decorators import login_required  # Ensures only logged
 from django.shortcuts import get_object_or_404 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.views.generic import ListView
-from django.views.generic import DetailView
-from django.views.generic import CreateView
-from django.views.generic import UpdateView
-from django.views.generic import DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from .models import Post
 from django.urls import reverse_lazy
 
