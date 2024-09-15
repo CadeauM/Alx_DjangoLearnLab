@@ -1,6 +1,9 @@
 from django.shortcuts import render 
 from django.shortcuts import redirect
 from django.contrib import messages
+from .models import Post
+from .models import Comment
+from .forms import CommentForm
 from .forms import UserRegisterForm  # Importing the forms file
 from django.contrib.auth.decorators import login_required  # Ensures only logged-in users can access the profile page
 from django.shortcuts import get_object_or_404 
@@ -79,3 +82,19 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         post = self.get_object() 
         return self.request.user == post.author
 
+@login_required  # This view handles adding a new comment to a blog post. The user must be logged in to comment.
+
+def add_comment(request, post_id):
+    post = get_object_or_404(Post, id=post_id)   # Get the post that the user is commenting on
+    if request.method == 'POST':
+        form = CommentForm(request.POST)  # Get the data from the form.
+
+        if form.is_valid():  # Checks if the form is valid
+            comment = form.save(commit=False)  # Create a comment, but don't save it just yet.
+            comment.post = post 
+            comment.author = request.user   # Link the comment to the correct post and set the author
+            comment.save()  # Now save the comment to the database.
+            return redirect('post_detail', pk=post_id)
+        else:
+            form = CommentForm()
+            return render(request, 'blog/add_comment.html', {'form': form, 'post': post})
