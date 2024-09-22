@@ -33,5 +33,5 @@ class UserFeedView(generics.ListAPIView):
         # Get the users that the current user is following
         following_users = self.request.user.following.all() 
         # Return posts from followed users, ordered by creation date 
-        return Post.objects.filter(author__in=followed_users).order_by('-created_at')
+        return Post.objects.filter(author__in=following_users).order_by('-created_at')
 
