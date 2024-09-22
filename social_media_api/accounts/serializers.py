@@ -1,9 +1,10 @@
 # Serializers are used to convert complex data types (like models) into JSON (a format that's easy to work with in APIs).
 from rest_framework import serializers
+from rest_framework import serializers.CharField()
 from .models import CustomUser
 from rest_framework.authtoken.models import Token
 
-User = get_user_model()
+User = get_user_model().objects.create_user
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
