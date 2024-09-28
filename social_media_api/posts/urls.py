@@ -13,5 +13,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('feed/', UserFeedView.as_view(), name='user-feed'),
     path('', views.notifications, name='notifications'),
+    path('<int:pk>/like/', views.like_post, name='like-post'),
+    path('<int:pk>/unlike/', views.unlike_post, name='unlike-post'),
 ]
 
