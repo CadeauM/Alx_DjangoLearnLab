@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from .models import Post, Like
 from notifications.models import Notification
 from django.shortcuts import get_object_or_404
+from django.shortcuts import generics.get_object_or_404(Post, pk=pk)
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 
