@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from django.conf import settings  # Add this line to import settings
 from django.conf import settings  # this line to import settings
 
 # Create your models here.
